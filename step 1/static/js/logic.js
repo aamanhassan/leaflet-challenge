@@ -1,7 +1,7 @@
 const url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson"
 let map = L.map("map", {
     center: [40.7,-94.5],
-    zoom: 3
+    zoom: 5
 });
 
 let basMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -10,18 +10,18 @@ let basMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 basMap.addTo(map);
 function getcolor(depth){
     if (depth>90){
-        return "#EA2C2C"
+        return "#ea2c2c"
     } else if (depth >70){
-        return "#EA82CC"
+        return "#ea82cc"
     } else if (depth >50){
-        return "#EE9C00"
+        return "#ee9c00"
     } else if (depth >30){
-        return "#EECC00"
+        return "#eecc00"
     } else if (depth>10){
-        return "#D4EE00"
+        return "#d4ee00"
     }
     else {
-        return "#98EE00"
+        return "#98ee00"
     }
 }
 function getRadius(magnitude){
@@ -68,9 +68,7 @@ d3.json(url).then(function(data){
         let grades = [-10, 10, 30, 50, 70, 90];
         let colors = ["#98EE00", "#D4EE00", "#EECC00", "#EE9C00", "#EA822C", "#EA2C2C" ];
         for(let index = 0; index<grades.length; index++){
-        //     container.innerHTML += `<i style="background: ${colors[index]}"></i> ${grades[index]}+ <br>`
-        // }
-        // return container;
+
         let rangeStart = grades[index];
         let rangeEnd = grades[index + 1];
 
